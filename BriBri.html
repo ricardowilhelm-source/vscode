@@ -1,38 +1,1160 @@
-
+```html
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+
+    <title>Mundo das Motos de Trilha</title>
+
     <style>
-        header{       
-             background-color: #183C63;
-            color: #FFFFFF;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px;
-            border: 5px solid #e00f0f;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        main {
-            background-color: #FFFFFF;
-            color: #183C63;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px;
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #101010;
+            color: #eeeeee;
+            line-height: 1.6;
+        }
+
+        /* ===== CABEÇALHO ===== */
+
+        header {
+            min-height: 650px;
+            background:
+                linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.85)),
+                url("https://commons.wikimedia.org/wiki/Special:FilePath/Trail%20biker%20-%20geograph.org.uk%20-%201003161.jpg")
+                center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .hero {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 900;
+        }
+
+        .hero h1 span {
+            color: #ff6b00;
+        }
+
+        .hero p {
+            margin: 20px auto;
+            font-size: 20px;
+            max-width: 700px;
+            color: #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 28px;
+            background: #ff6b00;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            background: #ff8c33;
+            transform: translateY(-3px);
+        }
+
+        /* ===== MENU ===== */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #181818;
+            border-bottom: 2px solid #ff6b00;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 18px 25px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        nav li a:hover {
+            background: #ff6b00;
+        }
+
+        /* ===== SEÇÕES ===== */
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 span {
+            color: #ff6b00;
+        }
+
+        .section-title p {
+            color: #aaa;
+            margin-top: 10px;
+        }
+
+        /* ===== INTRODUÇÃO ===== */
+
+        .intro {
+            background: #151515;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .intro-text h3 {
+            color: #ff6b00;
+            font-size: 27px;
+            margin-bottom: 15px;
+        }
+
+        .intro-text p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .intro-image img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+            box-shadow: 0 10px 40px rgba(0,0,0,.5);
+        }
+
+        /* ===== CARACTERÍSTICAS ===== */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .feature {
+            background: #1d1d1d;
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 3px solid #ff6b00;
+            transition: .3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-8px);
+            background: #242424;
+        }
+
+        .feature .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* ===== MODELOS ===== */
+
+        #modelos {
+            background: #0c0c0c;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .tab-button {
+            padding: 13px 22px;
+            border: 1px solid #444;
+            background: #191919;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .tab-button:hover,
+        .tab-button.active {
+            background: #ff6b00;
+            border-color: #ff6b00;
+        }
+
+        .model {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: #181818;
+            padding: 30px;
+            border-radius: 12px;
+            animation: fade .4s ease;
+        }
+
+        .model.active {
+            display: grid;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .model-image img {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .model-info h3 {
+            font-size: 36px;
+            color: #ff6b00;
+            margin-bottom: 10px;
+        }
+
+        .model-info .category {
+            color: #aaa;
+            margin-bottom: 25px;
+        }
+
+        .model-info p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .spec {
+            background: #242424;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .spec strong {
+            display: block;
+            color: #ff6b00;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        /* ===== TIPOS ===== */
+
+        .types {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .type-card {
+            background: #1b1b1b;
+            padding: 30px;
+            border-radius: 8px;
+            transition: .3s;
+        }
+
+        .type-card:hover {
+            transform: scale(1.02);
+        }
+
+        .type-card h3 {
+            color: #ff6b00;
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .type-card p {
+            color: #bbb;
+        }
+
+        /* ===== PILOTAGEM ===== */
+
+        .tips {
+            background: #161616;
+        }
+
+        .tips-list {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .tip {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #202020;
+            border-left: 4px solid #ff6b00;
+            border-radius: 4px;
+        }
+
+        .tip-number {
+            color: #ff6b00;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        /* ===== GALERIA ===== */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 7px;
+            transition: .3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        /* ===== RODAPÉ ===== */
+
+        footer {
+            background: #080808;
+            padding: 45px 8%;
+            text-align: center;
+            border-top: 2px solid #ff6b00;
+        }
+
+        footer h2 {
+            color: #ff6b00;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #777;
+        }
+
+        footer a {
+            color: #ff6b00;
+        }
+
+        /* ===== RESPONSIVO ===== */
+
+        @media (max-width: 900px) {
+            .intro-grid,
+            .model {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .types {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 60px 5%;
+            }
+
+            .features,
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            nav li a {
+                padding: 12px 10px;
+                font-size: 13px;
+            }
+
+            .model-image img {
+                height: 280px;
+            }
+
+            .specs {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
-<header>
-    <h1>Meu blog tech</h1>
-    <p>Vou compartilhar conhecimentos sobre tecnologia e programação</p>
-</header>
-<main>
-    <img src="imagem-blog.png" alt="Logotipo mostrando uma lâmpada estilizada em linhas neon azul e laranja, com um livro aberto no centro e traços de circuitos integrados ao redor.">
-    <h2>Meu primeiro post</h2>
-    <p>Boas-vindas ao meu novo blog! Aqui vou compartilhar dicas de rpogramação e curiosidades da área do tecnologia.</p>
-</main>
+
+    <!-- ================= HERO ================= -->
+
+    <header>
+        <div class="hero">
+            <h1>Mundo das <span>Motos de Trilha</span></h1>
+
+            <p>
+                Descubra o universo das motos off-road, seus diferentes tipos,
+                características e alguns modelos conhecidos.
+            </p>
+
+            <a href="#modelos" class="btn">EXPLORAR MODELOS</a>
+        </div>
+    </header>
+
+
+    <!-- ================= MENU ================= -->
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#caracteristicas">Características</a></li>
+            <li><a href="#modelos">Modelos</a></li>
+            <li><a href="#tipos">Tipos</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- ================= INTRO ================= -->
+
+    <section class="intro" id="inicio">
+
+        <div class="section-title">
+            <h2>O que são <span>motos de trilha?</span></h2>
+
+            <p>
+                Máquinas projetadas para terrenos fora do asfalto.
+            </p>
+        </div>
+
+        <div class="intro-grid">
+
+            <div class="intro-text">
+
+                <h3>Feitas para o terreno difícil</h3>
+
+                <p>
+                    Motos de trilha são motocicletas desenvolvidas para andar
+                    principalmente em terrenos irregulares, como terra,
+                    pedras, areia, lama e caminhos estreitos.
+                </p>
+
+                <p>
+                    Em comparação com motocicletas convencionais, elas
+                    normalmente possuem suspensões de maior curso, pneus
+                    apropriados para terra, maior distância do solo e uma
+                    construção pensada para enfrentar terrenos acidentados.
+                </p>
+
+                <p>
+                    Dentro do universo off-road existem várias categorias,
+                    incluindo motos de enduro, motocross, trial e modelos
+                    dual-sport.
+                </p>
+
+            </div>
+
+            <div class="intro-image">
+
+                <img
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Yamaha%20XT250%202008.jpg"
+                    alt="Yamaha XT250 em terreno off-road"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CARACTERÍSTICAS ================= -->
+
+    <section id="caracteristicas">
+
+        <div class="section-title">
+
+            <h2>Principais <span>Características</span></h2>
+
+            <p>
+                Elementos que tornam uma moto adequada ao uso fora de estrada.
+            </p>
+
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+                <div class="icon">🏍️</div>
+                <h3>Suspensão</h3>
+                <p>
+                    Suspensões com maior curso ajudam a absorver
+                    irregularidades do terreno.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">🛞</div>
+                <h3>Pneus</h3>
+                <p>
+                    Pneus com desenho específico proporcionam maior
+                    aderência em superfícies de terra.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">⛰️</div>
+                <h3>Altura</h3>
+                <p>
+                    Maior distância do solo ajuda a evitar obstáculos
+                    durante a pilotagem.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">⚙️</div>
+                <h3>Robustez</h3>
+                <p>
+                    A construção é pensada para suportar terrenos
+                    mais exigentes.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MODELOS ================= -->
+
+    <section id="modelos">
+
+        <div class="section-title">
+
+            <h2>Modelos de <span>Motos</span></h2>
+
+            <p>
+                Clique nas abas para conhecer alguns modelos.
+            </p>
+
+        </div>
+
+
+        <div class="tabs">
+
+            <button class="tab-button active"
+                    onclick="openModel(event, 'crf')">
+                Honda CRF250L
+            </button>
+
+            <button class="tab-button"
+                    onclick="openModel(event, 'xt')">
+                Yamaha XT250
+            </button>
+
+            <button class="tab-button"
+                    onclick="openModel(event, 'kx')">
+                Kawasaki KX450
+            </button>
+
+            <button class="tab-button"
+                    onclick="openModel(event, 'drz')">
+                Suzuki DR-Z4S
+            </button>
+
+        </div>
+
+
+        <!-- HONDA -->
+
+        <div class="model active" id="crf">
+
+            <div class="model-image">
+
+                <img
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Honda%20CRF250L.jpg"
+                    alt="Honda CRF250L"
+                >
+
+            </div>
+
+            <div class="model-info">
+
+                <h3>Honda CRF250L</h3>
+
+                <div class="category">
+                    Dual-sport / Off-road
+                </div>
+
+                <p>
+                    A CRF250L combina características de uma motocicleta
+                    voltada ao uso fora de estrada com características que
+                    permitem utilização em diferentes tipos de vias.
+                </p>
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <strong>Motor</strong>
+                        Monocilíndrico
+                    </div>
+
+                    <div class="spec">
+                        <strong>Cilindrada</strong>
+                        249 cc
+                    </div>
+
+                    <div class="spec">
+                        <strong>Categoria</strong>
+                        Dual-sport
+                    </div>
+
+                    <div class="spec">
+                        <strong>Uso</strong>
+                        Estrada / terra
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- YAMAHA -->
+
+        <div class="model" id="xt">
+
+            <div class="model-image">
+
+                <img
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Yamaha%20XT250%202008.jpg"
+                    alt="Yamaha XT250"
+                >
+
+            </div>
+
+            <div class="model-info">
+
+                <h3>Yamaha XT250</h3>
+
+                <div class="category">
+                    Dual-sport / Trail
+                </div>
+
+                <p>
+                    A Yamaha XT250 é um modelo conhecido por sua proposta
+                    simples e versátil, podendo ser utilizada tanto em
+                    estradas quanto em terrenos não pavimentados.
+                </p>
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <strong>Motor</strong>
+                        Monocilíndrico
+                    </div>
+
+                    <div class="spec">
+                        <strong>Cilindrada</strong>
+                        249 cc
+                    </div>
+
+                    <div class="spec">
+                        <strong>Categoria</strong>
+                        Dual-sport
+                    </div>
+
+                    <div class="spec">
+                        <strong>Perfil</strong>
+                        Versátil
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- KAWASAKI -->
+
+        <div class="model" id="kx">
+
+            <div class="model-image">
+
+                <img
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Kawasaki%20KX450%202.jpeg"
+                    alt="Kawasaki KX450"
+                >
+
+            </div>
+
+            <div class="model-info">
+
+                <h3>Kawasaki KX450</h3>
+
+                <div class="category">
+                    Motocross
+                </div>
+
+                <p>
+                    A KX450 pertence à família KX da Kawasaki, desenvolvida
+                    para o motocross e para utilização em pistas específicas
+                    de competição off-road.
+                </p>
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <strong>Motor</strong>
+                        4 tempos
+                    </div>
+
+                    <div class="spec">
+                        <strong>Cilindrada</strong>
+                        449 cc
+                    </div>
+
+                    <div class="spec">
+                        <strong>Categoria</strong>
+                        Motocross
+                    </div>
+
+                    <div class="spec">
+                        <strong>Perfil</strong>
+                        Competição
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUZUKI -->
+
+        <div class="model" id="drz">
+
+            <div class="model-image">
+
+                <img
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/2025%20Suzuki%20DR-Z4S.jpg"
+                    alt="Suzuki DR-Z4S"
+                >
+
+            </div>
+
+            <div class="model-info">
+
+                <h3>Suzuki DR-Z4S</h3>
+
+                <div class="category">
+                    Dual-sport / Trail
+                </div>
+
+                <p>
+                    A DR-Z4S faz parte da família DR-Z e representa uma
+                    proposta voltada para uso dual, combinando características
+                    de uma motocicleta para terra com utilização em diferentes
+                    ambientes.
+                </p>
+
+                <div class="specs">
+
+                    <div class="spec">
+                        <strong>Categoria</strong>
+                        Dual-sport
+                    </div>
+
+                    <div class="spec">
+                        <strong>Família</strong>
+                        DR-Z
+                    </div>
+
+                    <div class="spec">
+                        <strong>Perfil</strong>
+                        Trail
+                    </div>
+
+                    <div class="spec">
+                        <strong>Uso</strong>
+                        Off-road / vias
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TIPOS ================= -->
+
+    <section id="tipos">
+
+        <div class="section-title">
+
+            <h2>Tipos de <span>motos off-road</span></h2>
+
+            <p>
+                Nem toda moto de terra tem a mesma finalidade.
+            </p>
+
+        </div>
+
+
+        <div class="types">
+
+            <div class="type-card">
+
+                <h3>🏁 Motocross</h3>
+
+                <p>
+                    Desenvolvidas para pistas fechadas de motocross,
+                    geralmente possuem construção leve e suspensão
+                    preparada para saltos e terrenos muito irregulares.
+                </p>
+
+            </div>
+
+
+            <div class="type-card">
+
+                <h3>🌲 Enduro</h3>
+
+                <p>
+                    Pensadas para percursos mais longos e variados,
+                    normalmente atravessando trilhas, florestas,
+                    pedras, lama e outros obstáculos naturais.
+                </p>
+
+            </div>
+
+
+            <div class="type-card">
+
+                <h3>🛣️ Dual-sport</h3>
+
+                <p>
+                    Buscam equilibrar utilização em vias pavimentadas
+                    e terrenos não pavimentados.
+                </p>
+
+            </div>
+
+
+            <div class="type-card">
+
+                <h3>🪨 Trial</h3>
+
+                <p>
+                    Focadas em superar obstáculos técnicos em baixa
+                    velocidade, utilizando muito equilíbrio e controle.
+                </p>
+
+            </div>
+
+
+            <div class="type-card">
+
+                <h3>🏜️ Rally</h3>
+
+                <p>
+                    Projetadas para percursos de longa distância,
+                    incluindo terrenos como areia, terra e regiões
+                    desérticas.
+                </p>
+
+            </div>
+
+
+            <div class="type-card">
+
+                <h3>🌄 Trail</h3>
+
+                <p>
+                    Categoria bastante associada ao uso recreativo
+                    em trilhas e caminhos de terra, priorizando
+                    versatilidade.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PILOTAGEM ================= -->
+
+    <section class="tips">
+
+        <div class="section-title">
+
+            <h2>Trilha com <span>responsabilidade</span></h2>
+
+            <p>
+                Segurança deve fazer parte de qualquer atividade off-road.
+            </p>
+
+        </div>
+
+
+        <div class="tips-list">
+
+            <div class="tip">
+
+                <div class="tip-number">01</div>
+
+                <div>
+                    <strong>Use equipamentos de proteção</strong>
+                    <p>
+                        Capacete adequado, botas, luvas, proteção ocular
+                        e outros equipamentos apropriados são importantes.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="tip">
+
+                <div class="tip-number">02</div>
+
+                <div>
+                    <strong>Escolha locais apropriados</strong>
+                    <p>
+                        Utilize pistas, trilhas e áreas onde a circulação
+                        de motocicletas seja permitida.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="tip">
+
+                <div class="tip-number">03</div>
+
+                <div>
+                    <strong>Conheça seus limites</strong>
+                    <p>
+                        A dificuldade da trilha deve ser compatível com
+                        a experiência do piloto.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="tip">
+
+                <div class="tip-number">04</div>
+
+                <div>
+                    <strong>Respeite o ambiente</strong>
+                    <p>
+                        Evite áreas protegidas ou locais onde a circulação
+                        de veículos seja proibida e não deixe resíduos.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= GALERIA ================= -->
+
+    <section id="galeria">
+
+        <div class="section-title">
+
+            <h2>Galeria <span>Off-Road</span></h2>
+
+            <p>
+                Fotografias disponibilizadas no Wikimedia Commons.
+            </p>
+
+        </div>
+
+
+        <div class="gallery">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Honda%20CRF250L.jpg"
+                alt="Honda CRF250L"
+            >
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Yamaha%20XT250%202008.jpg"
+                alt="Yamaha XT250"
+            >
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Kawasaki%20KX450%202.jpeg"
+                alt="Kawasaki KX450"
+            >
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/1984%20Yamaha%20XT%20250.jpg"
+                alt="Yamaha XT250"
+            >
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/2025%20Suzuki%20DR-Z4S.jpg"
+                alt="Suzuki DR-Z4S"
+            >
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Trail%20biker%20-%20geograph.org.uk%20-%201003161.jpg"
+                alt="Motociclista em trilha"
+            >
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= RODAPÉ ================= -->
+
+    <footer>
+
+        <h2>MUNDO DAS MOTOS</h2>
+
+        <p>
+            Site educativo sobre motocicletas off-road.
+        </p>
+
+        <p style="margin-top:15px;">
+            Fotos: <a href="https://commons.wikimedia.org/"
+                      target="_blank">
+                Wikimedia Commons
+            </a>
+        </p>
+
+        <p style="margin-top:10px;">
+            Algumas fotografias possuem licenças Creative Commons
+            específicas. Consulte a página de cada arquivo antes
+            de reutilizá-lo.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function openModel(event, modelName) {
+
+            // Esconde todos os modelos
+            const models = document.querySelectorAll(".model");
+
+            models.forEach(model => {
+                model.classList.remove("active");
+            });
+
+
+            // Remove o estado ativo de todos os botões
+            const buttons = document.querySelectorAll(".tab-button");
+
+            buttons.forEach(button => {
+                button.classList.remove("active");
+            });
+
+
+            // Mostra o modelo selecionado
+            document.getElementById(modelName).classList.add("active");
+
+
+            // Ativa o botão clicado
+            event.currentTarget.classList.add("active");
+        }
+
+
+        // Pequeno efeito ao rolar a página
+        window.addEventListener("scroll", () => {
+
+            const nav = document.querySelector("nav");
+
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = "0 5px 20px rgba(0,0,0,.5)";
+            } else {
+                nav.style.boxShadow = "none";
+            }
+
+        });
+
+    </script>
+
 </body>
 </html>
+```
